@@ -1,7 +1,6 @@
 public interface IPlayerMovement
 {
-    void HandleMovement();
-    void Jump();
-
     bool IsGrounded { get; }
+    void HandleMovement();
+    void HandleJump();
 }

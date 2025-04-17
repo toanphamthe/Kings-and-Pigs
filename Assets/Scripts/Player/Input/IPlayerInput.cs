@@ -1,4 +1,6 @@
 public interface IPlayerInput
 {
-    void HandleInput();
+    bool IsAttacking { get; }
+    bool IsJumping { get; }
+    float Horizontal { get; }
 }

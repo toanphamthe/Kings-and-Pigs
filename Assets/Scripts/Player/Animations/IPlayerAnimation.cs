@@ -1,4 +1,4 @@
 public interface IPlayerAnimation
 {
-    void HandleAnimation(IPlayerMovement playerMovement);
+    void ChangeAnimation(string animationName);
 }
