@@ -6,14 +6,16 @@ public class Player : MonoBehaviour
     public IPlayerAnimation PlayerAnimation { get; private set; }
     public IPlayerInput PlayerInput { get; private set; }
     public IPlayerMovement PlayerMovement { get; private set; }
-    public IPlayerAttack PlayerAttack { get; private set; }
+    public IAttackable PlayerAttack { get; private set; }
+    public IDamageable PlayerTakeDamage { get; private set; }
 
     private void Awake()
     {
         PlayerAnimation = GetComponent<IPlayerAnimation>();
         PlayerInput = GetComponent<IPlayerInput>();
         PlayerMovement = GetComponent<IPlayerMovement>();
-        PlayerAttack = GetComponent<IPlayerAttack>();
+        PlayerAttack = GetComponent<IAttackable>();
+        PlayerTakeDamage = GetComponent<IDamageable>();
 
         _stateMachine = new PlayerStateMachine(this);
     }

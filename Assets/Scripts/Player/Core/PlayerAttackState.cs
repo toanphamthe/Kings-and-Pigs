@@ -3,10 +3,10 @@ using UnityEngine;
 public class PlayerAttackState : IState
 {
     private IPlayerAnimation _playerAnimation;
-    private IPlayerInput _playerInput;
-    private IPlayerMovement _playerMovement;
-    private IPlayerAttack _playerAttack;
+
+    private IAttackable _playerAttack;
     private Rigidbody2D _rb;
+    private IDamageable _playerTakeDamage;
 
     private PlayerStateMachine _stateMachine;
 
@@ -14,16 +14,14 @@ public class PlayerAttackState : IState
     {
         _stateMachine = playerStateMachine;
         _playerAnimation = player.PlayerAnimation;
-        _playerInput = player.PlayerInput;
-        _playerMovement = player.PlayerMovement;
         _playerAttack = player.PlayerAttack;
         _rb = player.GetComponent<Rigidbody2D>();
+        _playerTakeDamage = player.PlayerTakeDamage;
     }
 
     public void Enter()
     {
         _playerAnimation.ChangeAnimation("Attack");
-        _playerAttack.HandleAttack();
     }
 
     public void Execute()
@@ -33,6 +31,11 @@ public class PlayerAttackState : IState
         if (!_playerAttack.IsAttacking)
         {
             _stateMachine.TransitionTo(_stateMachine.IdleState); // Transition to idle state
+        }
+
+        if (_playerTakeDamage.IsStunned())
+        {
+            _stateMachine.TransitionTo(_stateMachine.TakeDamageState); // Transition to take damage state
         }
     }
 

@@ -5,7 +5,8 @@ public class PlayerRunState : IState
     private IPlayerAnimation _playerAnimation;
     private IPlayerInput _playerInput;
     private IPlayerMovement _playerMovement;
-    private IPlayerAttack _playerAttack;
+    private IAttackable _playerAttack;
+    private IDamageable _playerTakeDamage;
 
     private PlayerStateMachine _stateMachine;
 
@@ -16,6 +17,7 @@ public class PlayerRunState : IState
         _playerInput = player.PlayerInput;
         _playerMovement = player.PlayerMovement;
         _playerAttack = player.PlayerAttack;
+        _playerTakeDamage = player.PlayerTakeDamage;
     }
 
     public void Enter()
@@ -45,7 +47,15 @@ public class PlayerRunState : IState
             _stateMachine.TransitionTo(_stateMachine.AttackState); // Transition to attack state
         }
 
-        _playerMovement.HandleMovement();
+        if (_playerTakeDamage.IsStunned())
+        {
+            _stateMachine.TransitionTo(_stateMachine.TakeDamageState); // Transition to death state
+        }
+
+        if (!_playerTakeDamage.IsStunned())
+        {
+            _playerMovement.HandleMovement();
+        }
     }
 
     public void Exit()

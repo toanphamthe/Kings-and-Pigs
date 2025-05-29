@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AttackCollision : MonoBehaviour
 {
-    private IPlayerAttack _playerAttack;
+    private IAttackable _playerAttack;
 
     private void Update()
     {
@@ -11,7 +11,7 @@ public class AttackCollision : MonoBehaviour
 
     private void Awake()
     {
-        _playerAttack = GetComponentInParent<IPlayerAttack>();
+        _playerAttack = GetComponentInParent<IAttackable>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -9,6 +9,7 @@ public class PlayerStateMachine
     public PlayerFallState FallState { get; private set; }
     public PlayerDeathState DeathState { get; private set; }
     public PlayerAttackState AttackState { get; private set; }
+    public PlayerTakeDamageState TakeDamageState { get; private set; }
 
     public PlayerStateMachine(Player player)
     {
@@ -18,6 +19,7 @@ public class PlayerStateMachine
         FallState = new PlayerFallState(this, player);
         DeathState = new PlayerDeathState(this, player);
         AttackState = new PlayerAttackState(this, player);
+        TakeDamageState = new PlayerTakeDamageState(this, player);
     }
 
     public void Initialize(IState startingState)

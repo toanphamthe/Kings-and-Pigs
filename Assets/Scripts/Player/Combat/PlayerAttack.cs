@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour, IPlayerAttack
+public class PlayerAttack : MonoBehaviour, IAttackable
 {
     [SerializeField] private GameObject _attackHitbox;
     [SerializeField] private LayerMask _enemyLayer;
+    [SerializeField] private float _damageAmount;
 
     public bool IsAttacking { get; private set; }
 
@@ -14,16 +15,7 @@ public class PlayerAttack : MonoBehaviour, IPlayerAttack
         _attackHitbox.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy") && IsAttacking)
-        {
-            Debug.Log("Hit Enemy!");
-            // collision.GetComponent<Enemy>().TakeDamage(damageAmount);
-        }
-    }
-
-    public void StartAttack()
+    public void Attack()
     {
         IsAttacking = true;
         float attackSize = _attackHitbox.gameObject.GetComponent<CircleCollider2D>().radius;
@@ -32,18 +24,13 @@ public class PlayerAttack : MonoBehaviour, IPlayerAttack
         foreach (Collider2D enemy in enemiesHit)
         {
             Debug.Log("Hit enemy: " + enemy.name);
-            // enemy.GetComponent<Enemy>().TakeDamage(damageAmount);
+            enemy.GetComponent<Enemy>().TakeDamage(_damageAmount);
         }
     }
 
     public void StopAttack()
     {
         IsAttacking = false;
-    }
-
-    public void HandleAttack()
-    {
-        
     }
 
     private void OnDrawGizmosSelected()

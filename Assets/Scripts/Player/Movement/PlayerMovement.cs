@@ -40,8 +40,6 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
     private void Update()
     {
         GroundCheck();
-        HandleMovement();
-        HandleJump();
     }
 
     public void HandleMovement()

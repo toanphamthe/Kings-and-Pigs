@@ -5,6 +5,7 @@ public class PlayerFallState : IState
     private IPlayerAnimation _playerAnimation;
     private IPlayerInput _playerInput;
     private IPlayerMovement _playerMovement;
+    private IDamageable _playerTakeDamage;
 
     private PlayerStateMachine _stateMachine;
 
@@ -14,6 +15,7 @@ public class PlayerFallState : IState
         _playerAnimation = player.PlayerAnimation;
         _playerInput = player.PlayerInput;
         _playerMovement = player.PlayerMovement;
+        _playerTakeDamage = player.PlayerTakeDamage;
     }
 
     public void Enter()
@@ -23,6 +25,11 @@ public class PlayerFallState : IState
 
     public void Execute()
     {
+        if (!_playerTakeDamage.IsStunned())
+        {
+            _playerMovement.HandleMovement();
+        }
+
         if (_playerMovement.IsGrounded && _playerInput.Horizontal == 0)
         {
             _stateMachine.TransitionTo(_stateMachine.IdleState); // Transition to idle state
@@ -31,6 +38,11 @@ public class PlayerFallState : IState
         if (_playerMovement.IsGrounded && _playerInput.Horizontal != 0)
         {
             _stateMachine.TransitionTo(_stateMachine.RunState); // Transition to run state
+        }
+
+        if (_playerTakeDamage.IsStunned())
+        {
+            _stateMachine.TransitionTo(_stateMachine.TakeDamageState); // Transition to take damage state
         }
     }
 

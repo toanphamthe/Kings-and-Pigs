@@ -5,7 +5,8 @@ public class PlayerIdleState : IState
     private IPlayerAnimation _playerAnimation;
     private IPlayerInput _playerInput;
     private IPlayerMovement _playerMovement;
-    private IPlayerAttack _playerAttack;
+    private IAttackable _playerAttack;
+    private IDamageable _playerTakeDamage;
 
     private PlayerStateMachine _stateMachine;
     private Rigidbody2D _rb;
@@ -17,6 +18,7 @@ public class PlayerIdleState : IState
         _playerInput = player.PlayerInput;
         _playerMovement = player.PlayerMovement;
         _playerAttack = player.PlayerAttack;
+        _playerTakeDamage = player.PlayerTakeDamage;
 
         _rb = player.GetComponent<Rigidbody2D>();
     }
@@ -31,7 +33,7 @@ public class PlayerIdleState : IState
         if (_playerInput.Horizontal != 0 && _playerMovement.IsGrounded)
         {
             _stateMachine.TransitionTo(_stateMachine.RunState); // Transition to run state
-        }
+        }   
 
         if (_playerInput.IsJumping && _playerMovement.IsGrounded)
         {
@@ -46,6 +48,11 @@ public class PlayerIdleState : IState
         if (_playerInput.IsAttacking && _playerMovement.IsGrounded && !_playerAttack.IsAttacking)
         {
             _stateMachine.TransitionTo(_stateMachine.AttackState); // Transition to attack state
+        }
+
+        if (_playerTakeDamage.IsStunned())
+        {
+            _stateMachine.TransitionTo(_stateMachine.TakeDamageState); // Transition to take damage state
         }
     }
 
