@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - Box
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -14,10 +16,10 @@ TagManager:
   - UI
   - Ground
   - Enemy
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Box
+  - BreakPiece
+  - Item
   - 
   - 
   - 
