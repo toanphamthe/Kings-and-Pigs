@@ -3,6 +3,7 @@ using UnityEngine;
 public interface IPigMovement
 {
     bool IsGrounded { get; }
+    bool IsHittingWall { get; }
     void HandleMovement();
     void FlipDirection();
     float IdleTimer { get; }

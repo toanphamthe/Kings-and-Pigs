@@ -18,7 +18,7 @@ public class PigWalkState : IState
 
     public void Execute()
     {
-        if (!_pig.Movement.IsGrounded)
+        if (!_pig.Movement.IsGrounded || _pig.Movement.IsHittingWall)
         {
             _stateMachine.TransitionTo(_pig.IdleState); // Transition to IdleState if not grounded
         }
