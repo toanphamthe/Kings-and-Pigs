@@ -13,11 +13,7 @@ public class PlayerHit : MonoBehaviour, IPlayerDamageable
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            var enemy = collision.gameObject.GetComponent<IEnemyAttack>();
-            if (enemy != null)
-            {
-                TakeDamage(1, collision.transform.position);
-            }
+            TakeDamage(1, collision.transform.position);
         }
     }
 

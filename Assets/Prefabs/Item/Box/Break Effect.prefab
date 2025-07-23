@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7345659633801568708}
   - component: {fileID: 2868087762572862967}
   - component: {fileID: 784512844075916938}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Box Pieces 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 8838959875207838598}
   - component: {fileID: 4045461108669585701}
   - component: {fileID: 4264088641589446583}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Box Pieces 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7247515897438044924}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Break Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 8855328367191916886}
   - component: {fileID: 2086250056749168488}
   - component: {fileID: 3917541856785679571}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Box Pieces 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 5511550272327989711}
   - component: {fileID: 8569987087996824411}
   - component: {fileID: 1690328090918737947}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Box Pieces 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PigAttack : MonoBehaviour, IEnemyAttack
+public class PigAttack : MonoBehaviour, IPigAttack
 {
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private float _attackRange;

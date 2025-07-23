@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour, IPlayerAttackable
 
         foreach (Collider2D enemy in enemiesHit)
         {
-            enemy.GetComponent<IEnemyDamageable>().TakeDamage(_damageAmount, gameObject.transform.position);
+            enemy.GetComponent<IEnemyHit>().TakeDamage(_damageAmount, gameObject.transform.position);
         }
 
         if (boxHit != null)

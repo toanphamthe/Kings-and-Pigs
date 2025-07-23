@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6229353052046089019}
   - component: {fileID: 5110161201634613417}
   - component: {fileID: 7611886260436051459}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,8 +179,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _diamond: 0
   _heart: 1
+  _diamondAmount: 0
   _animator: {fileID: 0}
-  _collider2d: {fileID: 0}
 --- !u!95 &5110161201634613417
 Animator:
   serializedVersion: 7
