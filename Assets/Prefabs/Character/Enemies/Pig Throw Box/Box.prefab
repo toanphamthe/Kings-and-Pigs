@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1180070809051610402}
   - component: {fileID: 3603896503563983316}
   - component: {fileID: 2614979266836825079}
+  - component: {fileID: 5558139946063756549}
   m_Layer: 10
   m_Name: Box
   m_TagString: Untagged
@@ -242,8 +243,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f50ac7b5641a546a580ab60b8064a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
+  _rb: {fileID: 0}
+  _objectPool: {fileID: 0}
   collisionLayer:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 576
   _range: 0.6
-  _isBreakable: 0
+--- !u!114 &5558139946063756549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330654840615362046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627a47106945c3b48af34de53c5306db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

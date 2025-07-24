@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 5348761062103871067}
   - component: {fileID: 7193232889898693457}
   - component: {fileID: 3160379556682602976}
+  - component: {fileID: 3051792542876495732}
   m_Layer: 8
   m_Name: Pig Throw Bomb
   m_TagString: Untagged
@@ -217,7 +218,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &5365777071110403324
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -368,6 +369,20 @@ MonoBehaviour:
   _attackTimer: 0
   projectileHeight: 2
   gravityScale: 3
+--- !u!114 &3051792542876495732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7662350810029461007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071117175d968fe439239a1aec5f924a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initPoolSize: 1
+  objectToPool: {fileID: 1571213926154597483, guid: a42ddd392c0a8304d8a18f90d4de9723, type: 3}
 --- !u!1001 &872627305824470962
 PrefabInstance:
   m_ObjectHideFlags: 0

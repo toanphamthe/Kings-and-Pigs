@@ -178,6 +178,7 @@ MonoBehaviour:
   forceMin: 8
   forceMax: 10
   lifetime: 2
+  breakEffect: {fileID: 6838054309672968461}
 --- !u!1 &4423691848825024293
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +357,7 @@ MonoBehaviour:
   forceMin: 8
   forceMax: 10
   lifetime: 2
+  breakEffect: {fileID: 0}
 --- !u!1 &6838054309672968461
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,6 +571,7 @@ MonoBehaviour:
   forceMin: 8
   forceMax: 10
   lifetime: 2
+  breakEffect: {fileID: 0}
 --- !u!1 &7400356465252938276
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,3 +750,4 @@ MonoBehaviour:
   forceMin: 8
   forceMax: 10
   lifetime: 2
+  breakEffect: {fileID: 0}

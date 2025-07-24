@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class ThrownBox : MonoBehaviour
+public class ThrownBox : ThrownObject
 {
+    [Header("Thrown Box Settings")]
     [SerializeField] private LayerMask collisionLayer;
     [SerializeField] private float _range;
-    [SerializeField] private bool _isBreakable;
+
     private void Update()
     {
         BreakBox();
@@ -12,8 +13,6 @@ public class ThrownBox : MonoBehaviour
 
     private void BreakBox()
     {
-        if (_isBreakable)
-            return;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, _range, collisionLayer);
         if (hit.collider != null)
         {
@@ -31,6 +30,28 @@ public class ThrownBox : MonoBehaviour
                     player.TakeDamage(1, transform.position);
                 }
             }
+            ExplodeAndReturnToPool();
+        }
+    }
+
+    private void ExplodeAndReturnToPool()
+    {
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Static;
+        }
+
+        ReturnToPool();
+    }
+    
+    private void ReturnToPool()
+    {
+        PooledObject poolObj = GetComponent<PooledObject>();
+        if (_objectPool != null && poolObj != null)
+        {
+            _objectPool.ReturnToPool(poolObj);
         }
     }
 

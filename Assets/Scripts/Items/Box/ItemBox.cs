@@ -30,7 +30,10 @@ public class ItemBox : MonoBehaviour
                 }
             }
         }
+    }
 
+    public void OnDestroy()
+    {
         Destroy(gameObject);
     }
 }

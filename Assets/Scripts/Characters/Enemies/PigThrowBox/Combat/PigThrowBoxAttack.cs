@@ -11,8 +11,9 @@ public class PigThrowBoxAttack : MonoBehaviour, IPigThrowBoxAttack
     [SerializeField] private float _attackCooldown;
     [SerializeField] private bool _isAttacking;
     [SerializeField] private float _attackTimer;
+    private ObjectPool _objPool;
 
-    [SerializeField] private float projectileHeight = 2f;
+    [SerializeField] private float projectileHeight;
     [SerializeField] private float gravityScale;
 
     public bool IsAttacking => _isAttacking;
@@ -63,7 +64,19 @@ public class PigThrowBoxAttack : MonoBehaviour, IPigThrowBoxAttack
 
         Vector2 velocity = CalculateThrowVelocity(startPos, targetPos, projectileHeight, gravity);
 
-        GameObject thrownObj = Instantiate(_boxPrefab, startPos, Quaternion.identity);
+        _objPool = GetComponent<ObjectPool>();
+        PooledObject thrownObj = _objPool.GetPooledObject();
+        if (thrownObj == null) return;
+
+        thrownObj.transform.position = startPos;
+        thrownObj.transform.rotation = Quaternion.identity;
+        thrownObj.gameObject.SetActive(false);
+
+        ThrownObject throwable = thrownObj.GetComponent<ThrownObject>();
+        throwable?.Initialize(_objPool);
+
+        thrownObj.gameObject.SetActive(true);
+
         Rigidbody2D rb = thrownObj.GetComponent<Rigidbody2D>();
 
         if (rb != null)

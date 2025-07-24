@@ -5,6 +5,7 @@ public class BreakPiece : MonoBehaviour
     public float forceMin;
     public float forceMax;
     public float lifetime;
+    public GameObject breakEffect;
 
     private void Start()
     {
@@ -14,5 +15,10 @@ public class BreakPiece : MonoBehaviour
         GetComponent<Rigidbody2D>().AddForce(randomDir * randomForce, ForceMode2D.Impulse);
 
         Destroy(gameObject, lifetime);
+
+        if (breakEffect != null)
+        {
+            Destroy(breakEffect.gameObject, lifetime);
+        }
     }
 }

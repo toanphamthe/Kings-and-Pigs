@@ -110,13 +110,14 @@ GameObject:
   - component: {fileID: 4074315691545446205}
   - component: {fileID: 5961717790656476488}
   - component: {fileID: 1501268804619394446}
+  - component: {fileID: 4567085675391141214}
   m_Layer: 8
   m_Name: Pig Throw Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5206126706982899969
 Transform:
   m_ObjectHideFlags: 0
@@ -368,6 +369,20 @@ MonoBehaviour:
   _attackTimer: 0
   projectileHeight: 2
   gravityScale: 3
+--- !u!114 &4567085675391141214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8476537142206734324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071117175d968fe439239a1aec5f924a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initPoolSize: 1
+  objectToPool: {fileID: 5558139946063756549, guid: 827e6348c187818418d21c9243d522c5, type: 3}
 --- !u!1001 &4069947323976866152
 PrefabInstance:
   m_ObjectHideFlags: 0
