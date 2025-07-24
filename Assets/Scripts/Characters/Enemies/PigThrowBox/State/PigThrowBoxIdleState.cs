@@ -28,7 +28,7 @@ public class PigThrowBoxIdleState : IState
             _stateMachine.TransitionTo(_pigThrowBox.WalkState); // Transition to WalkState after idle duration
         }
 
-        if (!_pigThrowBox.Attack.IsAttacking && _pigThrowBox.GetComponent<PigThrowBoxAttack>().HitPlayer)
+        if (!_pigThrowBox.Attack.IsAttacking && _pigThrowBox.GetComponent<IPigThrowBoxAttack>().HitPlayer)
         {
             _stateMachine.TransitionTo(_pigThrowBox.AttackState); // Transition to AttackState if player is hit
         }
