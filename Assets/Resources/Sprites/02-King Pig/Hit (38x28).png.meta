@@ -132,10 +132,10 @@ TextureImporter:
       name: Hit (38x28)_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 3
-        width: 20
-        height: 23
+        x: 0
+        y: 0
+        width: 38
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,10 +154,10 @@ TextureImporter:
       name: Hit (38x28)_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 1
-        width: 20
-        height: 23
+        x: 38
+        y: 0
+        width: 38
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,7 +176,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8c599bc57dc5a744ab45a8ef9051bcce
     internalID: 0
     vertices: []
     indices: 

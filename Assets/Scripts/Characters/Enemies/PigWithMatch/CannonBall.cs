@@ -7,7 +7,6 @@ public class CannonBall : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private LayerMask _collisionLayer;
     [SerializeField] private int _damage;
-    [SerializeField] private bool _exploded;
 
     private void Awake()
     {
@@ -44,10 +43,6 @@ public class CannonBall : MonoBehaviour
         _animator.Play("Boom");
         _rb.bodyType = RigidbodyType2D.Static;    
     }
-
-    public void Explode()
-    {
-        _exploded = true;    }
 
     public void DestroyCannonBall()
     {

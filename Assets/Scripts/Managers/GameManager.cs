@@ -3,31 +3,118 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField, Range(0f, 1f)]
-    private float _gameSpeed;
+    public static GameManager Instance { get; private set; }
+    public GameState CurrentState { get; private set; }
+    public delegate void OnGameStateChanged(GameState newState);
+    public event OnGameStateChanged GameStateChanged;
 
-    [SerializeField]
-    private enum GameState
+    private void Awake()
     {
-        MainMenu,
-        Playing,
-        Paused,
-        GameOver
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        SceneManager.LoadSceneAsync("PlayerUI", LoadSceneMode.Additive);
+        // Initialize the game state to MainMenu
+        SetGameState(GameState.MainMenu);
     }
 
-    void Update()
+    public void UnlockLevel()
     {
-        //AdjustGameSpeed();
+        int currentLevel = PlayerPrefs.GetInt(PlayerPrefsKeys.UnlockedLevel, 1);
+        int nextLevel = currentLevel + 1;
+        PlayerPrefs.SetInt(PlayerPrefsKeys.UnlockedLevel, nextLevel);
+    }    
+
+    public void SetGameState(GameState newState)
+    {
+        if (newState == CurrentState) return;
+
+        CurrentState = newState;
+        Debug.Log("Game State changed to: " + newState);
+
+        GameStateChanged?.Invoke(newState);
+
+        HandleGameState(newState);
     }
 
-    private void AdjustGameSpeed()
+    private void HandleGameState(GameState state)
     {
-        // Adjust the game speed based on the _gameSpeed variable
-        Time.timeScale = _gameSpeed;
+        switch (state)
+        {
+            case GameState.Playing:
+                Time.timeScale = 1f;
+                SceneLoader.Instance.LoadAdditiveScene("PlayerUI");
+                SceneLoader.Instance.UnloadScene("GameOverUI");
+                SceneLoader.Instance.UnloadScene("VictoryUI");
+                SceneLoader.Instance.UnloadScene("PauseMenu");
+                break;
+            case GameState.Paused:
+                Time.timeScale = 0f;
+                SceneLoader.Instance.UnloadScene("PlayerUI");
+                SceneLoader.Instance.LoadAdditiveScene("PauseMenu");
+                break;
+            case GameState.GameOver:
+                Time.timeScale = 0f;
+                SceneLoader.Instance.UnloadScene("PlayerUI");
+                SceneLoader.Instance.LoadAdditiveScene("GameOverUI");
+                break;
+            case GameState.Victory:
+                Time.timeScale = 0f;
+                UnlockLevel();
+                SceneLoader.Instance.UnloadScene("GameOverUI");
+                SceneLoader.Instance.LoadAdditiveScene("VictoryUI");
+                break;
+            case GameState.MainMenu:
+                Time.timeScale = 1f;
+                break;
+        }
+    }
+
+    public void LoadCurrentLevel()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneLoader.Instance.LoadScene(currentSceneName);
+        SetGameState(GameState.Playing);
+    }
+
+    public void LoadMainMenu()
+    {
+        if (SceneManager.GetSceneByName("MainMenu").isLoaded) return;
+        SceneLoader.Instance.LoadScene("MainMenu");
+        SetGameState(GameState.MainMenu);
+    }
+
+    public void LoadNextLevel()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        if (currentSceneName.StartsWith("Lv_"))
+        {
+            // Parse level number
+            int currentLevel = int.Parse(currentSceneName.Substring(3));
+            int nextLevel = currentLevel + 1;
+
+            // Get PlayerPrefs for unlocked levels
+            int unlockedLevel = PlayerPrefs.GetInt(PlayerPrefsKeys.UnlockedLevel, 1);
+
+            // Check if the next level can be loaded
+            string nextLevelName = "Lv_" + nextLevel;
+            if (unlockedLevel >= nextLevel)
+            {
+                SceneLoader.Instance.LoadScene(nextLevelName);
+                SetGameState(GameState.Playing);
+            }
+            else
+            {
+                LoadMainMenu();
+            }
+        }
     }
 }

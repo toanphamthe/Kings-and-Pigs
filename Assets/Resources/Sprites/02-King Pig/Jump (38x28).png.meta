@@ -129,10 +129,10 @@ TextureImporter:
       name: Jump (38x28)_0
       rect:
         serializedVersion: 2
-        x: 10
+        x: 0
         y: 0
-        width: 20
-        height: 23
+        width: 38
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a095f53a2a4b3024e835b69e92d9c37c
     internalID: 0
     vertices: []
     indices: 

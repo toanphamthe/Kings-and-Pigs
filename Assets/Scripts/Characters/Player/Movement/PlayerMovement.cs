@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
     }
 
     // Draw gizmos for ground check in the editor
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         if (_groundCheckGizmos && _groundCheckObj != null)
         {
