@@ -50,7 +50,10 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Playing:
                 Time.timeScale = 1f;
-                SceneLoader.Instance.LoadAdditiveScene("PlayerUI");
+                if (!SceneManager.GetSceneByName("PlayerUI").isLoaded)
+                {
+                    SceneLoader.Instance.LoadAdditiveScene("PlayerUI");
+                }
                 SceneLoader.Instance.UnloadScene("GameOverUI");
                 SceneLoader.Instance.UnloadScene("VictoryUI");
                 SceneLoader.Instance.UnloadScene("PauseMenu");
@@ -61,12 +64,10 @@ public class GameManager : MonoBehaviour
                 SceneLoader.Instance.LoadAdditiveScene("PauseMenu");
                 break;
             case GameState.GameOver:
-                Time.timeScale = 0f;
                 SceneLoader.Instance.UnloadScene("PlayerUI");
                 SceneLoader.Instance.LoadAdditiveScene("GameOverUI");
                 break;
             case GameState.Victory:
-                Time.timeScale = 0f;
                 UnlockLevel();
                 SceneLoader.Instance.UnloadScene("GameOverUI");
                 SceneLoader.Instance.LoadAdditiveScene("VictoryUI");
@@ -80,8 +81,9 @@ public class GameManager : MonoBehaviour
     public void LoadCurrentLevel()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneLoader.Instance.LoadScene(currentSceneName);
-        SetGameState(GameState.Playing);
+        Debug.Log(currentSceneName);
+        Time.timeScale = 1f;
+        SceneLoader.Instance.LoadScenes(currentSceneName, "PlayerUI", GameState.Playing);
     }
 
     public void LoadMainMenu()

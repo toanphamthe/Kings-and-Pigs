@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.078431375}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -280,7 +280,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1025052601}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: OnPlayAgainButtonClick
+        m_MethodName: OnReplayButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -524,6 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a0871462d8d9f468002747e3deb97d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameOverPanel: {fileID: 173687692}
 --- !u!1 &1074891956
 GameObject:
   m_ObjectHideFlags: 0

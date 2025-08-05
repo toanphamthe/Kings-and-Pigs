@@ -37,7 +37,6 @@ public class LevelController : MonoBehaviour
 
     public void OnClickLevel(int level)
     {
-        SceneLoader.Instance.LoadScene($"Lv_{level}");
-        GameManager.Instance.SetGameState(GameState.Playing);
+        SceneLoader.Instance.LoadScenes($"Lv_{level}", "PlayerUI", GameState.Playing);
     }
 }

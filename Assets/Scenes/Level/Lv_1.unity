@@ -1077,7 +1077,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 4.821429
+  orthographic size: 5.625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1102,7 +1102,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.4, y: -1.449851, z: -10}
+  m_LocalPosition: {x: 19.36, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4144,6 +4144,63 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!1001 &1825676753
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4910741405676359971, guid: ca02d681b24c377498783684fc6ec490, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910741405676359971, guid: ca02d681b24c377498783684fc6ec490, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.149351
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910741405676359971, guid: ca02d681b24c377498783684fc6ec490, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910741405676359971, guid: ca02d681b24c377498783684fc6ec490, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910741405676359971, guid: ca02d681b24c377498783684fc6ec490, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910741405676359971, guid: ca02d681b24c377498783684fc6ec490, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910741405676359971, guid: ca02d681b24c377498783684fc6ec490, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910741405676359971, guid: ca02d681b24c377498783684fc6ec490, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910741405676359971, guid: ca02d681b24c377498783684fc6ec490, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4910741405676359971, guid: ca02d681b24c377498783684fc6ec490, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860530608238297799, guid: ca02d681b24c377498783684fc6ec490, type: 3}
+      propertyPath: m_Name
+      value: Pig
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca02d681b24c377498783684fc6ec490, type: 3}
 --- !u!4 &1852020495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2995876155298528376, guid: f25a81e61b58fed4caee7224bc513147, type: 3}
@@ -4616,26 +4673,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4828323443297945034, guid: 359b8ad7dc18cf04f8a2b2baf14908c2, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 4236677631525818213, guid: fbc7d352411855445b1480ba8c603d4c, type: 3}
-    - target: {fileID: 5728059645171736953, guid: 359b8ad7dc18cf04f8a2b2baf14908c2, type: 3}
-      propertyPath: _groundLayer.m_Bits
-      value: 448
-      objectReference: {fileID: 0}
-    - target: {fileID: 5830071945945969934, guid: 359b8ad7dc18cf04f8a2b2baf14908c2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6564515591206656142, guid: 359b8ad7dc18cf04f8a2b2baf14908c2, type: 3}
-      propertyPath: _boxLayer.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 6564515591206656142, guid: 359b8ad7dc18cf04f8a2b2baf14908c2, type: 3}
-      propertyPath: _enemyLayer.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     - target: {fileID: 6711733775052968993, guid: 359b8ad7dc18cf04f8a2b2baf14908c2, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4831,3 +4868,4 @@ SceneRoots:
   - {fileID: 3039310576068031174}
   - {fileID: 7067947600030206094}
   - {fileID: 1340394607}
+  - {fileID: 1825676753}

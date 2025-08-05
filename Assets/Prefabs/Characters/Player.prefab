@@ -319,6 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2aa9df15bbd59e4fbb56b96d90b04c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _disableInput: 0
 --- !u!114 &5728059645171736953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,7 +341,7 @@ MonoBehaviour:
   _groundCheckRadius: 0.53
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 448
   _jumpStartTime: 0
   _minJumpDuration: 0.2
   _groundCheckGizmos: 1
@@ -359,10 +360,10 @@ MonoBehaviour:
   _attackHitbox: {fileID: 0}
   _enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   _boxLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   _damageAmount: 1
   _isAttacking: 0
 --- !u!114 &7516211245463040353

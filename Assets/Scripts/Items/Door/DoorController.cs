@@ -27,6 +27,11 @@ public class DoorController : MonoBehaviour
 
     private void OnCutSceneFinished(PlayableDirector director)
     {
+        PlayerInput playerInput = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerInput>();
+        if (playerInput != null)
+        {
+            playerInput.DisableInput();
+        }
         GameManager.Instance.SetGameState(GameState.Victory);
     }
 }
