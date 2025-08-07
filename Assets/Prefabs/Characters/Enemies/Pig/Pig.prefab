@@ -289,7 +289,7 @@ MonoBehaviour:
   _groundCheckRadius: 0.2
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 32832
   _groundCheckGizmos: 1
   _groundCheckObj: {fileID: 6987245320128650121}
   _isGrounded: 1

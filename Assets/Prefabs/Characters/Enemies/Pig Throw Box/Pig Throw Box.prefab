@@ -178,8 +178,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1094597151
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -7066965682212810753, guid: d6f53fd1d6385da4291e7728824aa5e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -320,7 +320,7 @@ MonoBehaviour:
   _groundCheckRadius: 0.2
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 32960
   _groundCheckGizmos: 1
   _groundCheckObj: {fileID: 4972608575957216932}
   _isGrounded: 1
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackPoint: {fileID: 2706236688124215748}
   _boxPrefab: {fileID: 330654840615362046, guid: 827e6348c187818418d21c9243d522c5, type: 3}
-  _attackRange: 7
+  _attackRange: 9.16
   _throwPoint: {fileID: 8573759859134548493}
   _playerLayers:
     serializedVersion: 2

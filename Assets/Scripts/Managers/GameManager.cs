@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class GameManager : MonoBehaviour
     public GameState CurrentState { get; private set; }
     public delegate void OnGameStateChanged(GameState newState);
     public event OnGameStateChanged GameStateChanged;
+
+    [SerializeField] private Text _fps;
+    private float deltaTime;
 
     private void Awake()
     {
@@ -23,6 +27,13 @@ public class GameManager : MonoBehaviour
     {
         // Initialize the game state to MainMenu
         SetGameState(GameState.MainMenu);
+    }
+
+    private void Update()
+    {
+        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+        float fps = 1.0f / deltaTime;
+        _fps.text = "FPS: " + Mathf.Ceil(fps).ToString();
     }
 
     public void UnlockLevel()
@@ -49,6 +60,7 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case GameState.Playing:
+                SoundManager.Instance.PlayBackgroundMusic("Playing");
                 Time.timeScale = 1f;
                 if (!SceneManager.GetSceneByName("PlayerUI").isLoaded)
                 {
@@ -73,6 +85,7 @@ public class GameManager : MonoBehaviour
                 SceneLoader.Instance.LoadAdditiveScene("VictoryUI");
                 break;
             case GameState.MainMenu:
+                SoundManager.Instance.PlayBackgroundMusic("MainMenu");
                 Time.timeScale = 1f;
                 break;
         }

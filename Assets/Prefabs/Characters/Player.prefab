@@ -341,10 +341,11 @@ MonoBehaviour:
   _groundCheckRadius: 0.53
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 448
+    m_Bits: 1472
   _jumpStartTime: 0
   _minJumpDuration: 0.2
   _groundCheckGizmos: 1
+  _stopMove: 0
 --- !u!114 &6564515591206656142
 MonoBehaviour:
   m_ObjectHideFlags: 0

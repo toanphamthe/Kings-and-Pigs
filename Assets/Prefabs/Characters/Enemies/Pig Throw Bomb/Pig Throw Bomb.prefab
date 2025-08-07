@@ -320,7 +320,7 @@ MonoBehaviour:
   _groundCheckRadius: 0.2
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 32960
   _groundCheckGizmos: 1
   _groundCheckObj: {fileID: 7877442870900420318}
   _isGrounded: 1
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackPoint: {fileID: 4063368864139374188}
   _boxPrefab: {fileID: 9108108620708463694, guid: a42ddd392c0a8304d8a18f90d4de9723, type: 3}
-  _attackRange: 7
+  _attackRange: 12.38
   _throwPoint: {fileID: 2308540737986460630}
   _playerLayers:
     serializedVersion: 2

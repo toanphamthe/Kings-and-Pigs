@@ -248,7 +248,7 @@ MonoBehaviour:
   _objectPool: {fileID: 0}
   collisionLayer:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 704
   _range: 0.6
 --- !u!114 &5558139946063756549
 MonoBehaviour:

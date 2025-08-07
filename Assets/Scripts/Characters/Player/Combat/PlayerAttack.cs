@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour, IPlayerAttackable
         float attackSize = _attackHitbox.gameObject.GetComponent<CircleCollider2D>().radius;
 
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(_attackHitbox.transform.position, attackSize, _enemyLayer);
-        Collider2D boxHit = Physics2D.OverlapCircle(_attackHitbox.transform.position, attackSize, _boxLayer);
+        Collider2D[] boxHit = Physics2D.OverlapCircleAll(_attackHitbox.transform.position, attackSize, _boxLayer);
 
         if (enemiesHit != null)
         {
@@ -35,8 +35,11 @@ public class PlayerAttack : MonoBehaviour, IPlayerAttackable
 
         if (boxHit != null)
         {
-            boxHit?.GetComponent<ItemBox>()?.TakeDamage();
-            boxHit?.GetComponent<ItemBox>()?.OnDestroy();
+            foreach (Collider2D box in boxHit)
+            {
+                box?.GetComponent<ItemBox>()?.TakeDamage();
+                box?.GetComponent<ItemBox>()?.OnDestroy();
+            }
         }
 
     }
