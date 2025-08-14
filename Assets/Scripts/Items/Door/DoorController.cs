@@ -4,7 +4,6 @@ using UnityEngine.Playables;
 public class DoorController : MonoBehaviour
 {
     [SerializeField] private bool _isFinishDoor;
-    [SerializeField] private PlayableDirector _playableDirector;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,26 +11,10 @@ public class DoorController : MonoBehaviour
         {
             if (_isFinishDoor)
             {
-                if (_playableDirector != null)
-                {
-                    _playableDirector.Play();
-                    _playableDirector.stopped += OnCutSceneFinished;
-                }
-                else
-                {
-                    OnCutSceneFinished(null);
-                }
+                GameObject player = collision.gameObject;
+                player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                GameManager.Instance.SetGameState(GameState.Victory);
             }
         }
-    }
-
-    private void OnCutSceneFinished(PlayableDirector director)
-    {
-        PlayerInput playerInput = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerInput>();
-        if (playerInput != null)
-        {
-            playerInput.DisableInput();
-        }
-        GameManager.Instance.SetGameState(GameState.Victory);
     }
 }

@@ -3,18 +3,11 @@ using UnityEngine;
 public class ThrownBox : ThrownObject
 {
     [Header("Thrown Box Settings")]
-    [SerializeField] private LayerMask collisionLayer;
-    [SerializeField] private float _range;
+    [SerializeField] private LayerMask _collisionLayer;
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        BreakBox();
-    }
-
-    private void BreakBox()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, _range, collisionLayer);
-        if (hit.collider != null)
+        if ((_collisionLayer.value & (1 << collision.gameObject.layer)) != 0)
         {
             ItemBox itemBox = GetComponent<ItemBox>();
             if (itemBox != null)
@@ -22,9 +15,9 @@ public class ThrownBox : ThrownObject
                 itemBox.TakeDamage();
             }
 
-            if (hit.collider.CompareTag("Player"))
+            if (collision.CompareTag("Player"))
             {
-                PlayerHit player = hit.collider.GetComponent<PlayerHit>();
+                PlayerHit player = collision.GetComponent<PlayerHit>();
                 if (player != null)
                 {
                     player.TakeDamage(1, transform.position);
@@ -53,11 +46,5 @@ public class ThrownBox : ThrownObject
         {
             _objectPool.ReturnToPool(poolObj);
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, Vector2.down * _range);
     }
 }

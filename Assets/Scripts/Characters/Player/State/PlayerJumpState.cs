@@ -14,6 +14,7 @@ public class PlayerJumpState : IState
     public void Enter()
     {
         _player.Animation.PlayAnimation("Jump");
+        _player.PlaySFX("Jump");
 
         _player.Movement.HandleJump();   
     }

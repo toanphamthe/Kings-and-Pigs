@@ -14,6 +14,7 @@ public class PlayerHitState : IState
     public void Enter()
     {
         _player.Animation.PlayAnimation("Hit");
+        _player.PlaySFX("Hit");
     }
 
     public void Execute()

@@ -1,19 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
 
     [Header("Background Music")]
-    [SerializeField] private bool _isMusicEnabled;
-    public List<AudioClipEntry> audioClipEntries;
-    private Dictionary<string, AudioClip> _audioClipsDict;
+    [SerializeField] private bool _isMusicEnabled = true;
+    public List<AudioClipEntry> musicClipEntries;
+    private Dictionary<string, AudioClip> _musicDict;
     [SerializeField] private AudioSource _backgroundMusicSource;
 
     [Header("SFX")]
-    [SerializeField] private bool _isSFXEnabled;
+    [SerializeField] private bool _isSFXEnabled = true;
+    public List<AudioClipEntry> sfxClipEntries;
+    private Dictionary<string, AudioClip> _sfxDict;
     [SerializeField] private AudioSource _sfxSource;
 
     private void Awake()
@@ -26,54 +28,73 @@ public class SoundManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        _audioClipsDict = new Dictionary<string, AudioClip>();
-
-        foreach (var entry in audioClipEntries)
+        // Load Music
+        _musicDict = new Dictionary<string, AudioClip>();
+        foreach (var entry in musicClipEntries)
         {
-            if (!_audioClipsDict.ContainsKey(entry.sceneName))
-            {
-                _audioClipsDict.Add(entry.sceneName, entry.audioClip);
-            }
+            if (!_musicDict.ContainsKey(entry.name))
+                _musicDict.Add(entry.name, entry.audioClip);
+        }
+
+        // Load SFX
+        _sfxDict = new Dictionary<string, AudioClip>();
+        foreach (var entry in sfxClipEntries)
+        {
+            if (!_sfxDict.ContainsKey(entry.name))
+                _sfxDict.Add(entry.name, entry.audioClip);
+        }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name.StartsWith("Lv_"))
+        {
+            PlayBackgroundMusic("Playing");
         }
     }
 
-    public void IsMusicEnabled(bool enable)
-    {
-        _isMusicEnabled = enable;
-    }
-
-    public void IsSFXEnabled(bool enable)
-    {
-        _isSFXEnabled = enable;
-    }
+    public void IsMusicEnabled(bool enable) => _isMusicEnabled = enable;
+    public void IsSFXEnabled(bool enable) => _isSFXEnabled = enable;
 
     private void Update()
     {
-        if (_isMusicEnabled)
-        {
-            _backgroundMusicSource.volume = PlayerPrefs.GetFloat(PlayerPrefsKeys.Volume, 0.5f);
-        }
-        else
-        {
-            _backgroundMusicSource.volume = 0f;
-        }
+        float volume = PlayerPrefs.GetFloat(PlayerPrefsKeys.Volume, 0.5f);
 
-        if (_isMusicEnabled)
-        {
-            _sfxSource.volume = PlayerPrefs.GetFloat(PlayerPrefsKeys.Volume, 0.5f);
-        }
-        else
-        {
-            _sfxSource.volume = 0f;
-        }
+        _backgroundMusicSource.volume = _isMusicEnabled ? volume : 0f;
+        _sfxSource.volume = _isSFXEnabled ? volume : 0f;
     }
 
-    public void PlayBackgroundMusic(string scene)
+    // ===== MUSIC =====
+    public void PlayBackgroundMusic(string name)
     {
-        if (_audioClipsDict.TryGetValue(scene, out var clip))
+        if (_musicDict.TryGetValue(name, out var clip))
         {
             _backgroundMusicSource.clip = clip;
             _backgroundMusicSource.Play();
+        }
+        else
+        {
+            Debug.LogWarning($"Music '{name}' not found!");
+        }
+    }
+
+    // ===== SFX =====
+    public void PlaySFX(string name)
+    {
+        if (_sfxDict.TryGetValue(name, out var clip))
+        {
+            _sfxSource.PlayOneShot(clip);
+        }
+        else
+        {
+            Debug.LogWarning($"SFX '{name}' not found!");
         }
     }
 }

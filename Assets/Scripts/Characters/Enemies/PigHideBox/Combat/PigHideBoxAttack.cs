@@ -54,10 +54,7 @@ public class PigHideBoxAttack : MonoBehaviour, IPigHideBoxAttack
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (HitPlayer != null)
-            {
-                HitPlayer.GetComponent<PlayerHit>()?.TakeDamage(_playerDamage, transform.position); // Assuming Player has a TakeDamage method
-            }
+            collision.gameObject.GetComponent<PlayerHit>()?.TakeDamage(_playerDamage, transform.position);
         }
     }
 

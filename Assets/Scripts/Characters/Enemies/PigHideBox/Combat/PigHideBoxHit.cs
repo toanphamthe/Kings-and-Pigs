@@ -38,6 +38,9 @@ public class PigHideBoxHit : EnemyHit
         if (_pig != null)
         {
             GameObject pig = Instantiate(_pig, transform.position, Quaternion.identity);
+            Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
+            if (player == null) return;
+            pig.gameObject.GetComponent<PigHit>()?.TakeDamage(0, player.position);
         }
         Destroy(gameObject);
     }

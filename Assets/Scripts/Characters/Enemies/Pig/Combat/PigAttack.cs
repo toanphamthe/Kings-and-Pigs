@@ -20,6 +20,14 @@ public class PigAttack : MonoBehaviour, IPigAttack
         PlayerCheck();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerHit>()?.TakeDamage(_attackDamage, transform.position);
+        }
+    }
+
     // This method is called by the enemy state machine when the enemy is in an attacking state.
     private void PlayerCheck()
     {

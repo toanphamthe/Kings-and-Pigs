@@ -18,6 +18,10 @@ public class MainMenuController : MonoBehaviour
         gameObject.transform.DOScale(Vector3.zero, 0.3f)
      .SetEase(Ease.InBack)
      .OnComplete(() => gameObject.SetActive(false));
+        
+        SoundManager.Instance.PlaySFX("Button");
+
+
     }
 
     public void OnOpen(GameObject gameObject)
@@ -28,5 +32,6 @@ public class MainMenuController : MonoBehaviour
         gameObject.SetActive(true);
 
         gameObject.transform.DOScale(Vector3.one, 0.5f);
+        SoundManager.Instance.PlaySFX("Button");
     }
 }

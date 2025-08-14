@@ -8,5 +8,4 @@ public interface IPigThrowBoxAttack
     bool IsAttacking { get; }
     float AttackCooldown { get; }
     float AttackTimer { get; }
-    Collider2D HitPlayer { get; }
 }

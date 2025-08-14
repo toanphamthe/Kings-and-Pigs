@@ -129,7 +129,7 @@ CircleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 7f7c3b730d51dd841b384f05a43deb75, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -149,7 +149,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -192,13 +192,10 @@ MonoBehaviour:
   _animator: {fileID: 0}
   _rb: {fileID: 0}
   _objectPool: {fileID: 0}
-  _explosionMinDelay: 0.8
-  _explosionMaxDelay: 1.5
-  _explosionRadius: 2
   _damage: 1
-  _playerLayer:
+  _collisionLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 704
 --- !u!114 &1571213926154597483
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,23 +14,19 @@ public class PigThrowBoxIdleState : IState
     public void Enter()
     {
         _pigThrowBox.Animation.PlayAnimation("Idle");
-        _pigThrowBox.Movement.ResetIdleTimer();
         _pigThrowBox.Rigidbody.linearVelocity = Vector2.zero;
     }
 
     public void Execute()
     {
-        _pigThrowBox.Movement.UpdateIdleTimer();
-
-        if (_pigThrowBox.Movement.IdleTimer >= _pigThrowBox.Movement.IdleDuration)
-        {
-            _pigThrowBox.Movement.FlipDirection();
-            _stateMachine.TransitionTo(_pigThrowBox.WalkState); // Transition to WalkState after idle duration
-        }
-
-        if (!_pigThrowBox.Attack.IsAttacking && _pigThrowBox.GetComponent<IPigThrowBoxAttack>().HitPlayer)
+        if (!_pigThrowBox.Attack.IsAttacking)
         {
             _stateMachine.TransitionTo(_pigThrowBox.AttackState); // Transition to AttackState if player is hit
+        }
+
+        if (_pigThrowBox.Hit.IsStunned())
+        {
+            _stateMachine.TransitionTo(_pigThrowBox.HitState); // Transition to hit state
         }
     }
 

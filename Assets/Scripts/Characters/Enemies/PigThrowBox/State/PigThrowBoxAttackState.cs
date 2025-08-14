@@ -19,7 +19,11 @@ public class PigThrowBoxAttackState : IState
 
     public void Execute()
     {
-
+        if (_pigThrowBox.Hit.IsStunned())
+        {
+            _pigThrowBox.Attack.ResetAttack();
+            _stateMachine.TransitionTo(_pigThrowBox.HitState); // Transition to hit state
+        }
     }
 
     public void Exit()

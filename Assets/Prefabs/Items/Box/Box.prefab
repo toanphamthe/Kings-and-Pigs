@@ -77,8 +77,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 696819747
-  m_SortingLayer: 5
+  m_SortingLayerID: -1668268133
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e21812b52fc76f7408d7e8cbc8f5333b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -178,7 +178,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDrops:
   - {fileID: 4025848519862628115, guid: 30bd470ffe0666e4cadeb118178cabff, type: 3}
-  - {fileID: 7740297443078953673, guid: 4b231fb84a09bff4aa6b94aea711f23f, type: 3}
   breakEffectPrefab: {fileID: 6838054309672968461, guid: 4f627b921a2ed4a4eb16fd0ba2041baa, type: 3}
   maxDrops: 2
   forceMin: 6

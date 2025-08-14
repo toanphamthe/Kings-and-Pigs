@@ -38,5 +38,6 @@ public class LevelController : MonoBehaviour
     public void OnClickLevel(int level)
     {
         SceneLoader.Instance.LoadScenes($"Lv_{level}", "PlayerUI", GameState.Playing);
+        SoundManager.Instance.PlaySFX("Button");
     }
 }

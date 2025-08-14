@@ -19,7 +19,11 @@ public class PigThrowBoxIdleWithoutBoxState : IState
     public void Execute()
     {
         _pigThrowBox.Attack.UpdateAttackTimer();
-        _pigThrowBox.Rigidbody.linearVelocity = Vector2.zero;
+
+        if (_pigThrowBox.Hit.IsStunned())
+        {
+            _stateMachine.TransitionTo(_pigThrowBox.HitState); // Transition to hit state
+        }
 
         if (_pigThrowBox.Attack.AttackTimer <= _pigThrowBox.Attack.AttackCooldown) return;
 

@@ -5,12 +5,10 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
     public GameState CurrentState { get; private set; }
     public delegate void OnGameStateChanged(GameState newState);
     public event OnGameStateChanged GameStateChanged;
-
-    [SerializeField] private Text _fps;
-    private float deltaTime;
 
     private void Awake()
     {
@@ -25,23 +23,28 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // Initialize the game state to MainMenu
         SetGameState(GameState.MainMenu);
     }
 
-    private void Update()
+    public void SaveDiamond(int diamond)
     {
-        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
-        float fps = 1.0f / deltaTime;
-        _fps.text = "FPS: " + Mathf.Ceil(fps).ToString();
-    }
+        PlayerPrefs.SetInt(PlayerPrefsKeys.Diamond, diamond);
+    }    
 
     public void UnlockLevel()
     {
-        int currentLevel = PlayerPrefs.GetInt(PlayerPrefsKeys.UnlockedLevel, 1);
+        string sceneName = SceneManager.GetActiveScene().name;
+        int currentLevel = int.Parse(sceneName.Replace("Lv_", ""));
+
+        int unlockedLevel = PlayerPrefs.GetInt(PlayerPrefsKeys.UnlockedLevel, 1);
         int nextLevel = currentLevel + 1;
-        PlayerPrefs.SetInt(PlayerPrefsKeys.UnlockedLevel, nextLevel);
-    }    
+
+        if (nextLevel > unlockedLevel)
+        {
+            PlayerPrefs.SetInt(PlayerPrefsKeys.UnlockedLevel, nextLevel);
+            PlayerPrefs.Save();
+        }
+    }
 
     public void SetGameState(GameState newState)
     {
@@ -60,7 +63,6 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case GameState.Playing:
-                SoundManager.Instance.PlayBackgroundMusic("Playing");
                 Time.timeScale = 1f;
                 if (!SceneManager.GetSceneByName("PlayerUI").isLoaded)
                 {

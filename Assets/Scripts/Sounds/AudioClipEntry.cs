@@ -3,6 +3,6 @@ using UnityEngine;
 [System.Serializable]
 public class AudioClipEntry
 {
-    public string sceneName;
+    public string name;
     public AudioClip audioClip;
 }
