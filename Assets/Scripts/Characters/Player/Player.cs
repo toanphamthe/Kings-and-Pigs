@@ -34,4 +34,9 @@ public class Player : MonoBehaviour
     {
         _stateMachine.Update();
     }
+
+    public void PlaySFX(string name)
+    {
+        SoundManager.Instance.PlaySFX(name);
+    }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class DiamondPresenter : MonoBehaviour
 {
     [SerializeField] private IDiamond _diamond;
-    [SerializeField] private TextMeshProUGUI _diamondText;
+    [SerializeField] private Text _diamondText;
 
     void Start()
     {

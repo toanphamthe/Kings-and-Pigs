@@ -14,6 +14,8 @@ public class PlayerDeathState : IState
     public void Enter()
     {
         _player.Animation.PlayAnimation("Dead");
+        _player.PlaySFX("Death");
+        _player.Input.DisableInput();
     }
 
     public void Execute()

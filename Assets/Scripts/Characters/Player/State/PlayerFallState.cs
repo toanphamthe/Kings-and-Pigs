@@ -41,6 +41,6 @@ public class PlayerFallState : IState
 
     public void Exit()
     {
-
+        _player.PlaySFX("Land");
     }
 }

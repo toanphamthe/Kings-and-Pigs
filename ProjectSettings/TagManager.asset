@@ -15,15 +15,15 @@ TagManager:
   - Water
   - UI
   - Ground
+  - Platform
   - Enemy
   - Player
   - Box
   - BreakPiece
   - Item
-  - 
-  - 
-  - 
-  - 
+  - Wall
+  - CannonBall
+  - CollisionGround
   - 
   - 
   - 
@@ -53,13 +53,16 @@ TagManager:
   - name: Ground
     uniqueID: 3169011613
     locked: 0
+  - name: Item
+    uniqueID: 2626699163
+    locked: 0
   - name: Enemies
     uniqueID: 3200370145
     locked: 0
   - name: Player
     uniqueID: 696819747
     locked: 0
-  - name: Effects
+  - name: Effect
     uniqueID: 1498892957
     locked: 0
   - name: UI

@@ -20,6 +20,6 @@ public class PigHit : EnemyHit
 
     protected override IEnumerator ApplyKnockback(Vector2 attackerPosition)
     {
-        return base.ApplyKnockback(attackerPosition);
+        yield return base.ApplyKnockback(attackerPosition);
     }
 }

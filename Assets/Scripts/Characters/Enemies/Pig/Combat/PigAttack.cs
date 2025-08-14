@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PigAttack : MonoBehaviour, IEnemyAttack
+public class PigAttack : MonoBehaviour, IPigAttack
 {
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private float _attackRange;
@@ -18,6 +18,14 @@ public class PigAttack : MonoBehaviour, IEnemyAttack
     private void Update()
     {
         PlayerCheck();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerHit>()?.TakeDamage(_attackDamage, transform.position);
+        }
     }
 
     // This method is called by the enemy state machine when the enemy is in an attacking state.

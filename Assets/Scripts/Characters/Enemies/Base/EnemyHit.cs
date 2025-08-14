@@ -1,12 +1,12 @@
-    using System.Collections;
+using System.Collections;
 using UnityEngine;
 
-public class EnemyHit : MonoBehaviour, IEnemyDamageable
+public class EnemyHit : MonoBehaviour, IEnemyHit
 {
-    [SerializeField] private int _health;
-    [SerializeField] private bool _isStunned;
-    [SerializeField] private float _knockbackForce;
-    [SerializeField] private float _knockbackDuration;
+    [SerializeField] protected int _health;
+    [SerializeField] protected bool _isStunned;
+    [SerializeField] protected float _knockbackForce;
+    [SerializeField] protected float _knockbackDuration;
 
     // Applies damage to the enemy and initiates knockback.
     public virtual void TakeDamage(int damage, Vector2 attackerPosition)

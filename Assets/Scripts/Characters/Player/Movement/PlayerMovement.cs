@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
     [SerializeField] private float _jumpStartTime;
     [SerializeField] private float _minJumpDuration;
     [SerializeField] private bool _groundCheckGizmos;
+    [SerializeField] private bool _stopMove;
 
     public bool IsGrounded => _isGrounded;
     public float JumpStartTime => _jumpStartTime;
@@ -49,7 +50,10 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
     // Handles the movement logic, setting the Rigidbody2D's velocity based on player input and flipping the sprite based on direction.
     public void HandleMovement()
     {
-        _rb.linearVelocity = new Vector2(_playerInput.Horizontal * _moveSpeed, _rb.linearVelocity.y);
+        if (!_stopMove)
+        {
+            _rb.linearVelocity = new Vector2(_playerInput.Horizontal * _moveSpeed, _rb.linearVelocity.y);
+        }
 
         if (_playerInput.Horizontal > 0)
         {
@@ -71,6 +75,12 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
         }
     }
 
+    public void StopMovement()
+    {
+        _stopMove = true;
+        _rb.linearVelocity = Vector2.zero;
+    }
+
     // Checks if the player is grounded by using a circle overlap check.
     private void GroundCheck()
     {
@@ -78,7 +88,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
     }
 
     // Draw gizmos for ground check in the editor
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         if (_groundCheckGizmos && _groundCheckObj != null)
         {

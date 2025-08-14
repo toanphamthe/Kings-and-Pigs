@@ -9,18 +9,6 @@ public class PlayerHit : MonoBehaviour, IPlayerDamageable
     [SerializeField] private float _knockbackForce;
     [SerializeField] private float _knockbackDuration;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            var enemy = collision.gameObject.GetComponent<IEnemyAttack>();
-            if (enemy != null)
-            {
-                TakeDamage(1, collision.transform.position);
-            }
-        }
-    }
-
     // Applies damage to the player and initiates knockback.
     public void TakeDamage(int damage, Vector2 attackerPosition)
     {

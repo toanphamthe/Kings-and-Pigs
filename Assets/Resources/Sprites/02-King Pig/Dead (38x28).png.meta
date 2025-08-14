@@ -138,10 +138,10 @@ TextureImporter:
       name: Dead (38x28)_0
       rect:
         serializedVersion: 2
-        x: 10
+        x: 0
         y: 0
-        width: 21
-        height: 22
+        width: 38
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,10 +160,10 @@ TextureImporter:
       name: Dead (38x28)_1
       rect:
         serializedVersion: 2
-        x: 51
+        x: 38
         y: 0
-        width: 24
-        height: 17
+        width: 38
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,10 +182,10 @@ TextureImporter:
       name: Dead (38x28)_2
       rect:
         serializedVersion: 2
-        x: 90
+        x: 76
         y: 0
-        width: 25
-        height: 16
+        width: 38
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,10 +204,10 @@ TextureImporter:
       name: Dead (38x28)_3
       rect:
         serializedVersion: 2
-        x: 130
+        x: 114
         y: 0
-        width: 22
-        height: 17
+        width: 38
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,7 +226,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: fd6e94670ac2743488a46beb8da3ca3a
     internalID: 0
     vertices: []
     indices: 

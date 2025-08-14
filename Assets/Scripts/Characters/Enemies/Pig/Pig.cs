@@ -11,10 +11,10 @@ public class Pig : Enemy
     public PigAttackState AttackState { get; private set; }
 
     public Rigidbody2D Rigidbody { get; private set; }
-    public IPigMovement Movement { get; private set; }
+    public IEnemyMovement Movement { get; private set; }
     public ICharacterAnimation Animation { get; private set; }
-    public IEnemyAttack Attack { get; private set; }
-    public IEnemyDamageable Hit {  get; private set; }
+    public IPigAttack Attack { get; private set; }
+    public IEnemyHit Hit {  get; private set; }
 
     protected override void Awake()
     {
@@ -25,10 +25,10 @@ public class Pig : Enemy
         DeadState = new PigDeadState(this, _stateMachine);
         AttackState = new PigAttackState(this, _stateMachine);
 
-        Movement = GetComponent<IPigMovement>();
+        Movement = GetComponent<IEnemyMovement>();
         Animation = GetComponent<ICharacterAnimation>();
-        Attack = GetComponent<IEnemyAttack>();
-        Hit = GetComponent<IEnemyDamageable>();
+        Attack = GetComponent<IPigAttack>();
+        Hit = GetComponent<IEnemyHit>();
 
         Rigidbody = GetComponent<Rigidbody2D>();
     }

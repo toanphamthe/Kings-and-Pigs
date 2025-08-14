@@ -6,5 +6,6 @@ public class PlayerDeath : MonoBehaviour
     public void DeathHandle()
     {
         gameObject.SetActive(false);
+        GameManager.Instance.SetGameState(GameState.GameOver);
     }    
 }
